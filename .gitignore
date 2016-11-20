@@ -1,0 +1,13 @@
+logs
+*.log
+npm-debug.log*
+pids
+*.pid
+*.seed
+lib-cov
+.nyc_output
+.grunt
+.lock-wscript
+node_modules
+.idea
+*.iml
