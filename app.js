@@ -8,7 +8,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var faceValue = require('./routes/faceValue');
+var renpin = require('./routes/renpin');
+var query = require('./routes/query');
 
 var app = express();
 app.use(cors());
@@ -26,7 +28,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/upload', users);
+app.use('/upload', faceValue);
+app.use('/renpin', renpin);
+app.use('/query', query);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
