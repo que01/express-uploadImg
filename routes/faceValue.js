@@ -80,6 +80,7 @@ router.post('/',upload.single('file'), function(req, res, next) {
     }).then((data)=>{
         try{
             data = {
+                uuid:req.body.userId,
                 imgUrl:fileInfo.file,
                 faceValue : data.match(/颜值：(.*)分/)[1],
                 age : data.match(/年龄：(\w+)岁/)[1],
@@ -90,18 +91,24 @@ router.post('/',upload.single('file'), function(req, res, next) {
             updateOrCreate(
                 FaceValueModel, {uuid:req.body.userId}, data,
                 function () {
-                    console.log('created');
+                    res.json({
+                        code:200,
+                        data:data
+                    })
                 },
                 function () {
-                    console.log('updated');
+                    res.json({
+                        code:200,
+                        data:data
+                    })
                 },
                 function (err) {
-                    console.log(err);
+                    res.json({
+                        code:500,
+                        msg: 'mysql connection is error!'
+                    })
                 });
-            res.json({
-                code:200,
-                data:data
-            })
+
         }catch(e){
             data = {
                 uuid:req.body.userId,

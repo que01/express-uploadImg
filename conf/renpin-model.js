@@ -11,7 +11,7 @@ var sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.
 });
 
 var renpinValue = sequelize.define('renpinValue', {
-    name: Sequelize.INTEGER,
+    name: Sequelize.STRING,
     renpin: Sequelize.INTEGER,
     pingyu: Sequelize.STRING,
     uuid:Sequelize.STRING
